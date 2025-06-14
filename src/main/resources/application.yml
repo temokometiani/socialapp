@@ -1,0 +1,65 @@
+server:
+  port: 8888
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: teimuraz.kometiani@makingscience.com
+    password: zpgupnjgwcwxsvwf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/social_db
+    username: social_user
+    password: social_pass
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 5000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090/realms/social-realm
+  data:
+    redis:
+      host: redis
+      password: redis_pass
+      port: 6379
+
+minio:
+  endpoint: http://minio:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: forsocialapp
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+  o-auth-flow:
+    authorization-url: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/auth
+    token-url: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/token
+
+app:
+  auth:
+    token-expiration-sec: 86400
+#
+keycloak:
+  auth-server-url: http://localhost:9090/auth
+  realm: social-realm
+  client-id: social-client
+  client-secret: XDPaSrx4KHIiFBoNtcqoAz9wECD559uZ
+
+
