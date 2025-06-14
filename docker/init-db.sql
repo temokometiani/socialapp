@@ -1,0 +1,9 @@
+-- Users & Auth
+--CREATE TABLE users (
+--    id SERIAL PRIMARY KEY,
+--    username VARCHAR(50) UNIQUE,
+--    email VARCHAR(100) UNIQUE,
+--    password_hash VARCHAR(255),
+--    dob DATE,
+--    created_at TIMESTAMPTZ DEFAULT NOW()
+--);
