@@ -9,8 +9,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class AlbumCreateRequest {
     @NotBlank(message = "Album name cannot be empty")
     @Size(min = 1, max = 100, message = "Album name must be between 1 and 100 characters")
@@ -21,4 +20,28 @@ public class AlbumCreateRequest {
 
     @NotNull(message = "Visibility cannot be null")
     private Visibility visibility;
+
+    public String getName() {
+        return name;
+    }
+
+    public AlbumType getType() {
+        return type;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(AlbumType type) {
+        this.type = type;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
+    }
 }

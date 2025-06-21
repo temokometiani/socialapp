@@ -21,24 +21,20 @@ services:
       retries: 5
 
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: bitnami/keycloak:latest
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: social_user
-      DB_SCHEMA: public
-      DB_PASSWORD: social_pass
+      KEYCLOAK_DATABASE_HOST: social_db
+      KEYCLOAK_DATABASE_USER: social_user
+      KEYCLOAK_DATABASE_NAME: keycloak
+      KEYCLOAK_DATABASE_PASSWORD: social_pass
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin123
     ports:
       - "9090:8080"
     depends_on:
-      social-db:
+       social-db:
         condition: service_healthy
 
-    command:
-      - start-dev
 
 #  keycloak:
 #    image: quay.io/keycloak/keycloak:24.0.4

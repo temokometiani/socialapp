@@ -16,6 +16,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "album_accesses")
 @Getter
@@ -41,4 +43,56 @@ public class AlbumAccess {
     @Enumerated(EnumType.STRING)
     @Column(name = "see_all_files", nullable = false)
     private SeeAllFiles seeAllFiles;
+
+    @Column(name = "granted_at", nullable = false, updatable = false)
+    private LocalDateTime grantedAt;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    public SeeAllFiles getSeeAllFiles() {
+        return seeAllFiles;
+    }
+
+    public LocalDateTime getGrantedAt() {
+        return grantedAt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
+    public void setSeeAllFiles(SeeAllFiles seeAllFiles) {
+        this.seeAllFiles = seeAllFiles;
+    }
+
+    public void setGrantedAt(LocalDateTime grantedAt) {
+        this.grantedAt = grantedAt;
+    }
 }

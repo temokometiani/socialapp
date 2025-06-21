@@ -16,6 +16,7 @@ public interface AlbumAccessRepository extends JpaRepository<AlbumAccess, Long> 
     List<AlbumAccess> findByUser(User user);
     Optional<AlbumAccess> findByAlbumAndUser(Album album, User user);
     boolean existsByAlbumAndUserAndAccessLevel(Album album, User user, AccessLevel accessLevel);
-
+    List<AlbumAccess> findByUserAndAccessLevel(User user, AccessLevel accessLevel);
     Optional<AlbumAccess> findByUserAndAlbum(User user, Album album);
+
 }

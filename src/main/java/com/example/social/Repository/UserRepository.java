@@ -11,9 +11,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-
+    boolean existsByKeycloakUserId(String keycloakUserId);
     Optional<User> findByEmail(String email);
     Optional<User> findByKeycloakUserId(String keycloakUserId);
     boolean existsByEmail(String email);
     List<User> findByNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String name, String lastName);
+//    public List<User> getAll();
 }

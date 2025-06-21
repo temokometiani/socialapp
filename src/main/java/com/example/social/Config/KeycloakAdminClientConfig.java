@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KeycloakAdminClientConfig {
 
+
     @Value("${keycloak.auth-server-url}")
     private String serverUrl;
 
@@ -28,6 +29,8 @@ public class KeycloakAdminClientConfig {
                 .serverUrl(serverUrl)
                 .realm(realm)
                 .grantType("client_credentials")
+//                .username("admin")
+//                .password("admin123")
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .build();

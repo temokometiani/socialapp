@@ -15,16 +15,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(title = "Social Platform API", version = "v1.0", description = "API documentation for the social media platform."),
-        security = @SecurityRequirement(name = "keycloak_oauth") // Applies the security scheme globally to all endpoints
+        security = @SecurityRequirement(name = "keycloak_oauth")
 )
 @SecurityScheme(
         name = "keycloak_oauth",
         type = SecuritySchemeType.OAUTH2,
         flows = @OAuthFlows(
                 authorizationCode = @OAuthFlow(
-                        // URLs are placeholders that pull their values directly from your application.yml
-                        authorizationUrl = "${springdoc.o-auth-flow.authorization-url}",
-                        tokenUrl = "${springdoc.o-auth-flow.token-url}",
+                        authorizationUrl = "http://localhost:9090/realms/social-realm/protocol/openid-connect/auth",
+                        tokenUrl = "http://localhost:9090/realms/social-realm/protocol/openid-connect/token",
                         scopes = {
                                 @OAuthScope(name = "openid", description = "Standard OpenID Connect scope"),
                                 @OAuthScope(name = "profile", description = "Access to user profile information"),

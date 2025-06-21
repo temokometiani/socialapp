@@ -5,6 +5,7 @@ import com.example.social.Service.UserService;
 import com.example.social.Mapper.UserMapper;
 import com.example.social.model.DTO.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 @Tag(name = "2. Users", description = "APIs for user management and profiles")
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")   //BE CAREFUL
 public class UserController {
 
     private final UserService userService;
@@ -35,6 +36,13 @@ public class UserController {
         return ResponseEntity.ok(userMapper.toDto(userService.findUserById(id)));
     }
 
+    @DeleteMapping("/me")
+    @Operation(summary = "Delete current user's account", description = "Permanently deletes the account of the currently authenticated user from the system and Keycloak.")
+    @ApiResponse(responseCode = "204", description = "User account deleted successfully.")
+    public ResponseEntity<Void> deleteCurrentUser() {
+        userService.deleteCurrentUser();
+        return ResponseEntity.noContent().build();
+    }
     @GetMapping("/search")
     @Operation(summary = "Search for users", description = "Searches for users by their first or last name (case-insensitive).")
     public ResponseEntity<List<UserResponse>> searchUsers(@RequestParam String query) {

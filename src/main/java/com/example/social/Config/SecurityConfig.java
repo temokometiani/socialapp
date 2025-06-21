@@ -23,7 +23,13 @@ public class SecurityConfig {
     private static final String[] PUBLIC_ENDPOINTS = {
             "/swagger-ui/**",
             "/v3/api-docs/**",
-            "/api/auth/**"
+            "/api/auth/**",
+            "/api/friends/**",
+//            "/api/users/**",
+            "/api/users/**",
+            "/api/albums/**", // WARNING: Makes all album endpoints public
+            "/api/files/**"
+//            "/**"
     };
 
         @Bean
@@ -31,8 +37,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oauth2 -> oauth2

@@ -104,4 +104,10 @@ public class AuthService {
         }
         return otp.toString();
     }
+
+    public void resendOtp(String email) {
+        LOGGER.info("Resend OTP request received for user {}", email);
+        generateAndSendOtp(email);
+    }
+
 }

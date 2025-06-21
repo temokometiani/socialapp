@@ -58,4 +58,38 @@ public class Album {
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<AlbumAccess> accessRecords;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public AlbumType getAlbumType() {
+        return albumType;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public Set<File> getFiles() {
+        return files;
+    }
+
+    public Set<AlbumAccess> getAccessRecords() {
+        return accessRecords;
+    }
+
+
 }

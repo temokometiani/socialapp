@@ -13,4 +13,20 @@ public class SelectedUserFileAccessRequest {
 
     @NotNull(message = "Access level cannot be null")
     private AccessLevel accessLevel;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
+    }
 }

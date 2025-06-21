@@ -53,4 +53,60 @@ public class File {
 
     @OneToMany(mappedBy = "file", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SelectedUserFileAccess> userAccessRecords;
+
+    public Long getId() {
+        return id;
+    }
+
+    public FileType getFileType() {
+        return fileType;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public MinioInfo getMinioInfo() {
+        return minioInfo;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public Set<SelectedUserFileAccess> getUserAccessRecords() {
+        return userAccessRecords;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFileType(FileType fileType) {
+        this.fileType = fileType;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setMinioInfo(MinioInfo minioInfo) {
+        this.minioInfo = minioInfo;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public void setUserAccessRecords(Set<SelectedUserFileAccess> userAccessRecords) {
+        this.userAccessRecords = userAccessRecords;
+    }
 }

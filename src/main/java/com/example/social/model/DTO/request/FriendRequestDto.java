@@ -9,4 +9,12 @@ import lombok.Setter;
 public class FriendRequestDto {
     @NotNull(message = "Receiver User ID cannot be null")
     private Long receiverId;
+
+    public Long getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(Long receiverId) {
+        this.receiverId = receiverId;
+    }
 }

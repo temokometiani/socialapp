@@ -13,4 +13,20 @@ public class AlbumUpdateRequest {
     private String name;
 
     private Visibility visibility;
+
+    public String getName() {
+        return name;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
+    }
 }

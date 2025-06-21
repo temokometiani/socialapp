@@ -6,11 +6,27 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class FriendRequestActionDto {
     @NotNull(message = "Friend Request ID cannot be null")
     private Long requestId;
 
     @NotNull(message = "Status cannot be null")
-    private FriendRequestStatus status; }
+    private FriendRequestStatus status;
+
+    public Long getRequestId() {
+        return requestId;
+    }
+
+    public FriendRequestStatus getStatus() {
+        return status;
+    }
+
+    public void setRequestId(Long requestId) {
+        this.requestId = requestId;
+    }
+
+    public void setStatus(FriendRequestStatus status) {
+        this.status = status;
+    }
+}

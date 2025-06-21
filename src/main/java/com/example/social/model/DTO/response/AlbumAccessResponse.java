@@ -9,9 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@Builder
+
 public class AlbumAccessResponse {
     private Long id;
     private AlbumResponse album;
@@ -20,5 +18,51 @@ public class AlbumAccessResponse {
     private SeeAllFiles seeAllFiles;
     private LocalDateTime grantedAt;
 
+    public Long getId() {
+        return id;
+    }
 
+    public AlbumResponse getAlbum() {
+        return album;
+    }
+
+    public UserResponse getUser() {
+        return user;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    public SeeAllFiles getSeeAllFiles() {
+        return seeAllFiles;
+    }
+
+    public LocalDateTime getGrantedAt() {
+        return grantedAt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAlbum(AlbumResponse album) {
+        this.album = album;
+    }
+
+    public void setUser(UserResponse user) {
+        this.user = user;
+    }
+
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
+    public void setSeeAllFiles(SeeAllFiles seeAllFiles) {
+        this.seeAllFiles = seeAllFiles;
+    }
+
+    public void setGrantedAt(LocalDateTime grantedAt) {
+        this.grantedAt = grantedAt;
+    }
 }

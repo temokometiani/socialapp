@@ -16,7 +16,7 @@ public class SecurityUtils {
             Jwt jwt = (Jwt) authentication.getPrincipal();
             return jwt.getSubject();
         }
-        // This should theoretically never be reached if SecurityConfig is set up correctly.
+        // should never be reached if SecurityConfig is set up correctly.
         throw new ApiException("User not authenticated.", HttpStatus.UNAUTHORIZED);
     }
 }

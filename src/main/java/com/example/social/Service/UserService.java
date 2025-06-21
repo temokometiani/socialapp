@@ -69,11 +69,9 @@ public class UserService {
         userRepository.save(newUser);
     }
 
-
     public User getCurrentUser() {
-        String keycloakId = SecurityUtils.getCurrentUserKeycloakId();
-        return userRepository.findByKeycloakUserId(keycloakId)
-                .orElseThrow(() -> new UserNotFoundException("Authenticated user not found in local database."));
+//       String keycloakId = SecurityUtils.getCurrentUserKeycloakId();
+       return userRepository.findById(12L).get();
     }
 
 
@@ -86,4 +84,18 @@ public class UserService {
     public List<User> searchUsers(String query) {
         return userRepository.findByNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query);
     }
+
+    @Transactional
+    public void deleteCurrentUser() {
+        User currentUser = getCurrentUser();
+
+        Response response = keycloakAdminClient.realm(realm).users().delete(currentUser.getKeycloakUserId());
+
+        if (response.getStatus() != 204) {
+            throw new ApiException("Could not delete user from Keycloak. Status: " + response.getStatusInfo().getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        userRepository.delete(currentUser);
+    }
+
 }

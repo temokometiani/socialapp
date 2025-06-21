@@ -3,6 +3,7 @@ package com.example.social.Repository;
 import com.example.social.model.entity.Album;
 import com.example.social.model.entity.File;
 import com.example.social.model.entity.User;
+import com.example.social.model.enums.FileType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,4 +28,6 @@ public interface FileRepository extends JpaRepository<File, Long> {
     List<File> findFilesVisibleToUser(@Param("viewer") User viewer, @Param("friendIds") List<Long> friendIds);
     Optional<File> findByIdAndOwner(Long fileId, User owner);
     Optional<File> findByMinioInfo_ObjectKey(String objectKey);
+    List<File> findByAlbumAndFileType(Album album, FileType fileType);
+
 }

@@ -21,4 +21,36 @@ public class FileUploadRequest {
 
     @NotNull(message = "File cannot be null")
     private MultipartFile file;
+
+    public Long getAlbumId() {
+        return albumId;
+    }
+
+    public FileType getFileType() {
+        return fileType;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
+    }
+
+    public void setFileType(FileType fileType) {
+        this.fileType = fileType;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 }

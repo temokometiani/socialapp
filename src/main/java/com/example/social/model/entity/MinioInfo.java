@@ -23,4 +23,38 @@ public class MinioInfo {
 
     @Column(name = "minio_created_at", nullable = false)
     private LocalDateTime createdAt;
+
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public String getObjectKey() {
+        return objectKey;
+    }
+
+    public String getBucketName() {
+        return bucketName;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public void setObjectKey(String objectKey) {
+        this.objectKey = objectKey;
+    }
+
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
