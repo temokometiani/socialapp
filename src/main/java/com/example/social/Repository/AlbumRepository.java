@@ -15,5 +15,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
 
     List<Album> findByOwner(User owner);
 
+    List<Album> findAlbumsVisibleToUser(User currentUser, List<Long> friendIds);
+
     //List<Album> findAlbumsVisibleToUser(User currentUser, List<Long> friendIds);
 }
